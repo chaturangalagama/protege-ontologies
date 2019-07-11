@@ -1,13 +1,39 @@
 PREFIX uni: <https://github.com/rafaeleyng/protege-ontologies/raw/master/university.owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX un: <http://www.w3.org/2007/ont/unit#>
+#PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-SELECT (CONCAT(?manager_first_name, " ", ?manager_last_name) AS ?manager_name) (CONCAT(?steward_first_name, " ", ?steward_last_name) AS ?steward_name) 
-WHERE {   ?manager uni:manages ?resturant .
-  		  ?steward uni:works ?resturant .
-          ?manager uni:first_name ?manager_first_name .
-          ?manager uni:last_name ?manager_last_name .   
-          ?steward uni:first_name ?steward_first_name .
-          ?steward uni:last_name ?steward_last_name .    
-	  }
+#DONE
+#SELECT (CONCAT(?manager_first_name, " ", ?manager_last_name) AS ?manager_name) (CONCAT(?steward_first_name, " ", ?steward_last_name) AS ?steward_name) 
+#WHERE {   ?manager uni:manages ?resturant .
+#  		  ?steward uni:works ?resturant .
+#          ?manager uni:first_name ?manager_first_name .
+#          ?manager uni:last_name ?manager_last_name .   
+#          ?steward uni:first_name ?steward_first_name .
+#          ?steward uni:last_name ?steward_last_name .    
+#	  }
+
+#DONE
+#SELECT ?food
+#WHERE {   ?food rdfs:subClassOf uni:Food .    }
+
+#DONE
+#SELECT ?food
+#WHERE {   ?food rdfs:subClassOf uni:Kottu .    }
+
+#DONE
+#SELECT ?staff (CONCAT(?first_name, " ", ?last_name) AS ?name) ?resturant
+#WHERE {   ?staff rdfs:subClassOf uni:Staff .   
+#			?staff uni:first_name ?first_name .  
+#			?staff uni:last_name ?last_name . 
+#			?staff uni:works ?resturant .
+#		}
+
+#DONE
+#SELECT ?resturant ?location ?name
+#WHERE {   ?resturant rdfs:subClassOf uni:Resturant .   
+#			?resturant uni:location ?location .     
+#			?resturant uni:name ?name .   }
 
 #SELECT (CONCAT(?first_name, " ", ?last_name) AS ?name) 
 #WHERE {   ?uni uni:manages uni:Resturant2 .
@@ -34,17 +60,8 @@ WHERE {   ?manager uni:manages ?resturant .
 #          ?uni uni:first_name ?first_name .
 #          ?uni uni:last_name ?last_name .    }
 
-#---------------------------University---------------------------
-
-#SELECT (CONCAT(?first_name, " ", ?last_name) AS ?name) 
-#WHERE {   ?uni uni:studies uni:M204 .
+#SELECT (CONCAT(?first_name, " ", ?last_name) AS ?name) ?food
+#WHERE {   ?uni uni:eats ?food .
 #          ?uni uni:first_name ?first_name .
 #          ?uni uni:last_name ?last_name .    }
 
-#SELECT * {?student uni:studies uni:M204}
-
-#SELECT ?subject ?predicate ?object
-#WHERE {
-#  ?subject ?predicate ?object
-#}
-#LIMIT 25

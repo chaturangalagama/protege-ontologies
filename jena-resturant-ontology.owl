@@ -1,130 +1,205 @@
 @prefix :      <https://github.com/rafaeleyng/protege-ontologies/raw/master/university.owl#> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
-<https://github.com/rafaeleyng/protege-ontologies/raw/master/university.owl> a owl:Ontology .
+:manages  a          owl:ObjectProperty ;
+        rdfs:domain  :Owner ;
+        rdfs:range   :Steward , :Chef .
 
-[ a owl:AllDisjointClasses ; owl:members ( :CSModule :Lecturer :MathModule :Student )] .
+:eats   a            owl:ObjectProperty ;
+        rdfs:domain  :Customer ;
+        rdfs:range   :Food .
 
-#Food
-:Food a owl:Class .
+:Food   a       owl:Class .
 
-:Fried_Rice a owl:Class ; rdfs:subClassOf :Food .
-:Kottu a owl:Class ; rdfs:subClassOf :Food .
-:Pasta a owl:Class ; rdfs:subClassOf :Food .
-:Pizza a owl:Class ; rdfs:subClassOf :Food .
+:Fried_Rice  a           owl:Class , :Food .
 
-:Chicken_Fried_Rice a owl:NamedIndividual , :Fried_Rice .
-:Singaporean_Fried_Rice a owl:NamedIndividual , :Fried_Rice .
-:Chopsuey_Fried_Rice a owl:NamedIndividual , :Fried_Rice .
+:Kottu  a                owl:Class , :Food .
 
-:Chicken_Kottu a owl:NamedIndividual , :Kottu .
-:Cheese_Kottu a owl:NamedIndividual , :Kottu .
-:Mixed_Meat_Kottu a owl:NamedIndividual , :Kottu .
+:Pasta  a                owl:Class , :Food .
 
-:Macaroni a owl:NamedIndividual , :Pasta .
-:Spaghetti a owl:NamedIndividual , :Pasta .
-:Lasagne a owl:NamedIndividual , :Pasta .
+:Pizza  a                owl:Class , :Food .
 
-:Margherita_Pizza a owl:NamedIndividual , :Pizza .
-:Pepperoni_Pizza a owl:NamedIndividual , :Pizza .
-:Hawaiian_Pizza a owl:NamedIndividual , :Pizza .
+:Spaghetti  a   owl:NamedIndividual ;
+rdfs:subClassOf  :Pasta ;
+        rdfs:subClassOf  :Food .
+
+:Singaporean_Fried_Rice a       owl:NamedIndividual ;
+rdfs:subClassOf  :Fried_Rice ;
+        rdfs:subClassOf  :Food .
+
+:Hawaiian_Pizza  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Pizza ;
+        rdfs:subClassOf  :Food .
+
+:Macaroni  a    owl:NamedIndividual ;
+rdfs:subClassOf  :Pasta ;
+        rdfs:subClassOf  :Food .
+
+:Cheese_Kottu  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Kottu ;
+        rdfs:subClassOf  :Food .
+
+:Chopsuey_Fried_Rice  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Fried_Rice .
+
+:Chicken_Fried_Rice  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Fried_Rice ;
+        rdfs:subClassOf  :Food .
+
+:Chicken_Kottu  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Kottu ;
+        rdfs:subClassOf  :Food .
+
+:Lasagne  a     owl:NamedIndividual ;
+rdfs:subClassOf  :Pasta ;
+        rdfs:subClassOf  :Food .
+
+:Pepperoni_Pizza  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Pizza ;
+        rdfs:subClassOf  :Food .
+
+:Margherita_Pizza  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Pizza ;
+        rdfs:subClassOf  :Food .
+
+:Mixed_Meat_Kottu  a  owl:NamedIndividual ;
+rdfs:subClassOf  :Kottu ;
+        rdfs:subClassOf  :Food .
+
+:serves  a           owl:ObjectProperty ;
+        rdfs:domain  :Steward ;
+        rdfs:range   xsd:integer .
+
+:location  a         owl:DatatypeProperty ;
+        rdfs:domain  :Resturant ;
+        rdfs:range   xsd:string .
+
+:cooks  a            owl:ObjectProperty ;
+        rdfs:domain  :Chef ;
+        rdfs:range   :Food .
+
+:name   a            owl:DatatypeProperty ;
+        rdfs:domain  :Resturant ;
+        rdfs:range   xsd:string .
+
+:Customer2  a        owl:NamedIndividual , :Customer ;
+        :eats        :Chicken_Fried_Rice ;
+        :first_name  "Chad" ;
+        :last_name   "Copat" ;
+        :tableId     1235 .
+
+:Resturant  a   owl:Class .
+
+:Steward  a              owl:Class , :Staff .
+
+:Manager2  a         owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Manager ;
+        :first_name  "Ranil" ;
+        :last_name   "Jayawardane" ;
+        :manages     :Resturant2 ;
+        :staffId     417691 .
+
+:Person  a      owl:Class .
+
+:Manager  a              owl:Class , :Staff .
+
+:Chef1  a            owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Chef ;
+        :cooks       :Fried_Rice , :Kottu ;
+        :first_name  "Kamal" ;
+        :last_name   "Silva" ;
+        :staffId     417688 ;
+        :works       :Resturant1 .
+
+:Chef2  a            owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Chef ;
+        :cooks       :Pasta , :Pizza ;
+        :first_name  "Aruna" ;
+        :last_name   "Madhusanka" ;
+        :staffId     417689 ;
+        :works       :Resturant2 .
+
+:Chef   a                owl:Class , :Staff .
+
+:Customer1  a        owl:NamedIndividual , :Customer ;
+        :eats        :Chicken_Fried_Rice , :Lasagne ;
+        :first_name  "Rafael" ;
+        :last_name   "Eyng" ;
+        :tableId     1234 .
+
+:staffId  a          owl:DatatypeProperty ;
+        rdfs:domain  :Staff ;
+        rdfs:range   xsd:integer .
+
+[ a            owl:AllDisjointClasses ;
+  owl:members  ( :CSModule :Lecturer :MathModule :Student )
+] .
+
+:Steward2  a         owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Steward ;
+        :first_name  "Nimal" ;
+        :last_name   "Perera" ;
+        :serves      1235 ;
+        :staffId     417687 ;
+        :works       :Resturant2 .
+
+:last_name  a        owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   xsd:string .
+
+<https://github.com/rafaeleyng/protege-ontologies/raw/master/university.owl>
+        a       owl:Ontology .
+
+:Customer  a             owl:Class ;
+        rdfs:subClassOf  :Person .
+
+:first_name  a       owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   xsd:string .
+
+:Staff  a                owl:Class ;
+        rdfs:subClassOf  :Person .
+
+:Manager1  a         owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Manager ;
+        :first_name  "Sunil" ;
+        :last_name   "Silva" ;
+        :manages     :Resturant1 ;
+        :staffId     417690 .
+
+:tableId  a          owl:DatatypeProperty ;
+        rdfs:domain  :Customer ;
+        rdfs:range   xsd:integer .
+
+:Steward1  a         owl:NamedIndividual ;
+        rdfs:subClassOf  :Staff ;
+        rdfs:subClassOf  :Steward ;
+        :first_name  "Larisa" ;
+        :last_name   "Soldatova" ;
+        :serves      1234 ;
+        :staffId     417686 ;
+        :works       :Resturant1 .
+
+:works  a            owl:ObjectProperty ;
+        rdfs:domain  :Staff ;
+        rdfs:range   :Resturant .
 
 
-#Resturant
-:Resturant a owl:Class .
+:Resturant1  a           owl:NamedIndividual ;
+        rdfs:subClassOf  :Resturant ;
+        :location        "Kadawatha" ;
+        :name            "Amritha" .
 
-:Resturant1 a owl:Class ; rdfs:subClassOf :Resturant .
-:Resturant2 a owl:Class ; rdfs:subClassOf :Resturant .
 
-:Resturant1 a :Resturant, owl:NamedIndividual ;
-:name        "Amritha" ;
-:location    "Kadawatha" .
-
-:Resturant2 a :Resturant, owl:NamedIndividual ;
-:name        "Pronto" ;
-:location    "Nugegoda" .
-
-#Person
-:Person a owl:Class .
-
-:Customer a owl:Class ; rdfs:subClassOf :Person .
-:Staff a owl:Class ; rdfs:subClassOf :Person .
-
-:Manager a owl:Class ; rdfs:subClassOf :Staff .
-:Chef a owl:Class ; rdfs:subClassOf :Staff .
-:Steward a owl:Class ; rdfs:subClassOf :Staff .
-
-#Actions
-:eats a owl:ObjectProperty ; rdfs:domain :Customer ; rdfs:range :Food .
-:manages a owl:ObjectProperty ; rdfs:domain :Owner ; rdfs:range :Chef , :Steward .
-:cooks a owl:ObjectProperty ; rdfs:domain :Chef ; rdfs:range :Food .
-:serves a owl:ObjectProperty ; rdfs:domain :Steward ; rdfs:range xsd:integer .
-:works a owl:ObjectProperty ; rdfs:domain :Staff ; rdfs:range :Resturant .
-
-#Properties
-:staffId a owl:DatatypeProperty ; rdfs:domain :Staff ; rdfs:range xsd:integer .
-:tableId a owl:DatatypeProperty ; rdfs:domain  :Customer ; rdfs:range xsd:integer .
-:last_name a owl:DatatypeProperty ; rdfs:domain  :Person ; rdfs:range xsd:string .
-:first_name a owl:DatatypeProperty ; rdfs:domain  :Person ; rdfs:range xsd:string .
-:name a owl:DatatypeProperty ; rdfs:domain  :Resturant ; rdfs:range xsd:string .
-:location a owl:DatatypeProperty ; rdfs:domain  :Resturant ; rdfs:range xsd:string .
-
-#Customer
-:Customer1 a :Customer, owl:NamedIndividual ;
-:first_name  "Rafael" ;
-:last_name   "Eyng" ;
-:tableId     1234 ;
-:eats        :Lasagne , :Margherita_Pizza .
-
-:Customer2 a :Customer , owl:NamedIndividual ;
-:first_name  "Chad" ;
-:last_name   "Copat" ;
-:tableId     1235 ;
-:eats        :Chicken_Fried_Rice .
-
-#Steward
-:Steward1 a :Steward , owl:NamedIndividual ;
-:first_name  "Larisa" ;
-:last_name   "Soldatova" ;
-:staffId     417686 ;
-:serves      1234 ;
-:works       :Resturant1 .
-
-:Steward2 a :Steward , owl:NamedIndividual ;
-:first_name  "Nimal" ;
-:last_name   "Perera" ;
-:staffId     417687 ;
-:serves      1235 ;
-:works       :Resturant2 .
-
-#Chef
-:Chef1 a :Chef , owl:NamedIndividual ;
-:first_name  "Kamal" ;
-:last_name   "Silva" ;
-:staffId     417688 ;
-:cooks      :Fried_Rice, :Kottu ;
-:works       :Resturant1 .
-
-:Chef2 a :Chef , owl:NamedIndividual ;
-:first_name  "Aruna" ;
-:last_name   "Madhusanka" ;
-:staffId     417689 ;
-:cooks      :Pasta , :Pizza ;
-:works       :Resturant2 .
-
-#Manager
-:Manager1 a :Manager , owl:NamedIndividual ;
-:first_name  "Sunil" ;
-:last_name   "Silva" ;
-:staffId     417690 ;
-:manages       :Resturant1 .
-
-:Manager2 a :Manager , owl:NamedIndividual ;
-:first_name  "Ranil" ;
-:last_name   "Jayawardane" ;
-:staffId     417691 ;
-:manages       :Resturant2 .
-
+:Resturant2  a           owl:NamedIndividual ;
+        rdfs:subClassOf  :Resturant ;
+        :location        "Nugegoda" ;
+        :name            "Pronto" .

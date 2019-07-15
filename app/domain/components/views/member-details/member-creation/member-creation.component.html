@@ -1,0 +1,64 @@
+<div class="row form-main mr-0 h-100 pt-2">
+    <div class="col-12 mt-2 mb-2">
+        <div class="container-fluid">
+            <form>
+                <div class="card">
+                    <div class="card-header">
+                        Member
+                    </div>
+                    <div [formGroup]="memberCreationFormGroup" class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Name</label>
+                                <input class="form-control form-control-sm" formControlName='name' />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Phone</label>
+                                <input class="form-control form-control-sm" formControlName='phoneNumber' />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Email</label>
+                                <input class="form-control form-control-sm" formControlName='email' />
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                <label>Date of Birth</label>
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control form-control-sm datepicker" #dp="bsDatepicker"
+                                        bsDatepicker [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',containerClass:
+                                      'theme-blue'}"
+                                        formControlName="dateOfBirth">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="icon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Address</label>
+                                <input class="form-control form-control-sm" formControlName='address' />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Member Group</label>
+                                <ng-select class="p-0 form-control form-control-sm custom-select" bindLabel="name"
+                                    placeholder="Select Member Group" [clearable]="false" [items]="memberGroupsList"
+                                    formControlName="memberGroup">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6 align-self-end text-right">
+                                <button class="btn btn-blue btn-medium" (click)="onSaveClicked()">Create New
+                                    Member</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

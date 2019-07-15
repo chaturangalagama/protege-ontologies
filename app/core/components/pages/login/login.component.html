@@ -1,0 +1,49 @@
+<div class="row form-main mr-0 h-100 pt-2">
+    <div class="col-12 mt-2 mb-2">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">Member Search</h6>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="searchFormGroup">
+                        <div class="row ml-0">
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <label>Member Group</label>
+                                    <ng-select class="p-0 form-control form-control-sm custom-select" bindLabel="name"
+                                        placeholder="Select Member Group" [clearable]="false" [items]="memberGroupsList"
+                                        formControlName="memberGroup">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 align-self-end text-left">
+                                <button class="btn btn-blue btn-medium mr-2" (click)="onSearchClicked()">Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <ngx-datatable #myTable id="memerList" class='bootstrap mt-4' [columnMode]="'flex'" [headerHeight]="30"
+                        [footerHeight]="30" [rowHeight]="'auto'" [rows]='rows' [rowClass]="getRowClass">
+                        <ngx-datatable-column name="Name" prop="name" [resizeable]=false [flexGrow]=0.7>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div>{{ row.name }}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Phone" prop="phoneNumber" [resizeable]=false [flexGrow]=0.7>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div>{{ row.phoneNumber }}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Email" prop="email" [resizeable]=false [flexGrow]=0.7>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div>{{ row.email }}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

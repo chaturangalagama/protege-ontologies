@@ -1,0 +1,83 @@
+<div class="row form-main mr-0 h-100 pt-2">
+    <div class="col-12 mt-2 mb-2">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">Resturant Search</h6>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="searchFormGroup">
+                        <div class="row ml-0">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <label>Search Item</label>
+                                <ng-select class="p-0 form-control form-control-sm custom-select" bindLabel="name"
+                                    placeholder="Select Member Group" [clearable]="false" [items]="searchItemList"
+                                    formControlName="memberGroup">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="row ml-0">
+                            <div class="col-md-3 align-self-end text-left">
+                                <button class="btn btn-blue btn-medium mr-2" (click)="onSearchClicked()">Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <ngx-datatable #myTable id="memberList" class='bootstrap mt-4' [columnMode]="'flex'" [headerHeight]="30"
+                        [footerHeight]="30" [rowHeight]="'auto'" [rows]='result' [rowClass]="getRowClass">
+
+                        <ngx-datatable-column name="" [resizeable]=false [flexGrow]=0.7>
+                            <ng-template let-column="column" ngx-datatable-header-template>
+                                <div *ngFor="let item of searchItemList" >
+                                    <span *ngIf="searchFormGroup.value.memberGroup == item">{{item.headers[0]}}</span>
+                                </div>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div *ngFor="let item of searchItemList" >
+                                    <div *ngIf="searchFormGroup.value.memberGroup == item && row._1!=undefined">
+                                            <div *ngIf="row._1.type=='literal'">{{ row._1.value }}</div>
+                                            <div *ngIf="row._1.type=='uri'">{{ row._1.value.split('#')[1] }}</div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="" [resizeable]=false [flexGrow]=0.7>
+                                <ng-template let-column="column" ngx-datatable-header-template>
+                                    <div *ngFor="let item of searchItemList" >
+                                        <span *ngIf="searchFormGroup.value.memberGroup == item">{{item.headers[1]}}</span>
+                                    </div>
+                                </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                    <div *ngFor="let item of searchItemList" >
+                                        <div *ngIf="searchFormGroup.value.memberGroup == item && row._2!=undefined">
+                                                <div *ngIf="row._2.type=='literal'">{{ row._2.value }}</div>
+                                                <div *ngIf="row._2.type=='uri'">{{ row._2.value.split('#')[1] }}</div>
+                                        </div>
+                                    </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="" [resizeable]=false [flexGrow]=0.7>
+                                <ng-template let-column="column" ngx-datatable-header-template>
+                                    <div *ngFor="let item of searchItemList" >
+                                        <span *ngIf="searchFormGroup.value.memberGroup == item">{{item.headers[2]}}</span>
+                                    </div>
+                                </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                    <div *ngFor="let item of searchItemList" >
+                                        <div *ngIf="searchFormGroup.value.memberGroup == item && row._3!=undefined">
+                                                <div *ngIf="row._3.type=='literal'">{{ row._3.value }}</div>
+                                                <div *ngIf="row._3.type=='uri'">{{ row._3.value.split('#')[1] }}</div>
+                                        </div>
+                                    </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

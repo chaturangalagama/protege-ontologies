@@ -17,6 +17,13 @@ PREFIX un: <http://www.w3.org/2007/ont/unit#>
 #SELECT ?food
 #WHERE {   ?food rdfs:subClassOf uni:Food .    }
 
+ 
+#SELECT ?_1
+#WHERE {
+#    VALUES ?o { uni:Kottu uni:Fried_Rice } 
+#    ?_1 rdfs:subClassOf ?o.
+#}
+
 #DONE
 #SELECT ?food
 #WHERE {   ?food rdfs:subClassOf uni:Kottu .    }

@@ -25,6 +25,29 @@
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="searchFormGroup.value.memberGroup.name == 'Foods available'">
+                        <!-- <div>
+                            <input type="checkbox" [(ngModel)]="all" [ngModelOptions]="{standalone: true}"/>
+                            <label>  All foods</label>
+                        </div> -->
+                        <div>
+                            <input type="checkbox" [(ngModel)]="kottu" [ngModelOptions]="{standalone: true}"/>
+                            <label>  Kottu</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" [(ngModel)]="friedrice" [ngModelOptions]="{standalone: true}"/>
+                            <label>  Fried Rice</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" [(ngModel)]="pizza" [ngModelOptions]="{standalone: true}"/>
+                            <label>  Pizza</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" [(ngModel)]="pasta" [ngModelOptions]="{standalone: true}"/>
+                            <label>  Pasta</label>
+                        </div>
+                    </div>
+
                     </form>
                     <ngx-datatable #myTable id="memberList" class='bootstrap mt-4' [columnMode]="'flex'" [headerHeight]="30"
                         [footerHeight]="30" [rowHeight]="'auto'" [rows]='result' [rowClass]="getRowClass">
